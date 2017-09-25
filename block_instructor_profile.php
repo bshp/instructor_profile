@@ -75,6 +75,9 @@ class block_instructor_profile extends block_base {
         $user->imagealt = fullname($user);
 
         $out  = $OUTPUT->user_picture($user, $params);
+        $out .= html_writer::start_tag('p');
+        $out .= html_writer::end_tag('p');
+        $out .= html_writer::link(new moodle_url('/user/view.php', array('id' => $user->id, 'course' => $COURSE->id)), get_string('viewbio', 'block_instructor_profile'));
         $out .= html_writer::tag('p', $profile->name);
         $out .= html_writer::tag('p', $profile->email);
 
